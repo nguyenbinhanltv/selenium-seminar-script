@@ -56,6 +56,10 @@ async function lazadaTestOne(line) {
   if (line) {
     var amount = Number(line.split(" ")[0]);
     var discount = Number(line.split(" ")[1]);
+
+    if (discount > 100 || discount < 0 || amount < 0) {
+      return false;
+    }
   }
   let data = [];
   let finalData = [];

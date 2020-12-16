@@ -39,3 +39,19 @@ describe("Kịch bản 3: Tìm 5 sản phẩm có giảm giá thành công", () 
     });
   });
 });
+
+describe("Kịch bản 3: Số lượng sản phẩm nhập vào sai hoặc giảm giá nằm ngoài vùng 0% -> 100%", () => {
+  it("Số lượng sản phẩm sai", () => {
+    scriptOne.lazadaTestOne("-5 0")
+    .then(data => {
+      expect(data).to.be.false;
+    });
+  });
+
+  it("Giảm giá nằm ngoài vùng 0% -> 100%", () => {
+    scriptOne.lazadaTestOne("5 -10")
+    .then(data => {
+      expect(data).to.be.false;
+    });
+  });
+});
